@@ -1,0 +1,18 @@
+---
+- connection: local
+  host: localhost
+  tasks:
+  - name: restart core services
+    service: 
+      name: "{{ item }}"
+      state: restarted
+    with_items: 
+      - newrelic
+      - ngnix
+      - php
+      - postgresql
+ roles:
+   - role: telusdigital.newrelic
+   - role: telusdigital.ngnix
+   - role: telusdigital.php
+   - role: telusdigital.postgresql
